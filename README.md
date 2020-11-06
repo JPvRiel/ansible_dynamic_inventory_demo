@@ -1,13 +1,13 @@
 # Ansible dynamic inventory demo
 
-At the time of writing this, the Ansible documentation is fairly sparse and doesn't provide a lot of details about how dynamic script inventories relate to and differ from flat file inventory host format extensions such as `.ini` or `.yaml`. The JSON object (and deserialised python dict) a dynamic inventory script needs to produce looks somewhat different in schema and structure compared to the static flat file formats.
-
-Clone this gist and run `./demo.sh` as an example. It demonstrates a few things:
+Run `./demo.sh` as an example. It demonstrates a few things:
 
 - `eg_hosts.json` is a contrived example to tease out the combinations between hosts, groups, and children groupings.
   - `demo_dynamic_inventory.py` simply reads this into an inventory dict, as if it was something an API or script would product.
 - `./demo.sh` provides ansible related commands to help debug and inspect how the inventory is being interpreted.
-- Demonstrates how inventory directories such as `group_vars` and `host_vars` can overload/add to vars from dynamic inventories.
+- Demonstrates how static inventory variables in directories such as `group_vars` and `host_vars` can overload/add to vars in addition to variables provided by the dynamic inventory.
+
+At the time of writing this, the Ansible documentation is fairly sparse and doesn't provide a lot of details about how dynamic script inventories relate to and differ from flat file inventory host format extensions such as `.ini` or `.yaml`. The JSON object (and deserialised python dict) the dynamic inventory script needs to produce looks somewhat different in schema and structure compared to the static flat file formats.
 
 ## Lessons
 
