@@ -2,10 +2,11 @@
 
 Run `./demo.sh` as an example. It demonstrates a few things:
 
-- `eg_hosts.json` is a contrived example to tease out the combinations between hosts, groups, and children groupings.
-  - `demo_dynamic_inventory.py` simply reads this into an inventory dict, as if it was something an API or script would product.
+- `eg_dynamic_hosts.json` is a contrived example to tease out the combinations between hosts, groups, and children groupings.
+- `demo_dynamic_inventory.py` is an ansible dynamic inventory script that simply reads `eg_dynamic_hosts.json` into an inventory dict, as if it was something an API or script would produce.
 - `./demo.sh` provides ansible related commands to help debug and inspect how the inventory is being interpreted.
 - Demonstrates how static inventory variables in directories such as `group_vars` and `host_vars` can overload/add to vars in addition to variables provided by the dynamic inventory.
+- `eg_nested_hosts.yml` is an example showing a portion of a static nested yaml inventory which needs to be flattened in order to work as a dynamic inventory.
 
 At the time of writing this, the Ansible documentation is fairly sparse and doesn't provide a lot of details about how dynamic script inventories relate to and differ from flat file inventory host format extensions such as `.ini` or `.yaml`. The JSON object (and deserialised python dict) the dynamic inventory script needs to produce looks somewhat different in schema and structure compared to the static flat file formats.
 
