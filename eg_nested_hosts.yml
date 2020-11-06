@@ -1,0 +1,14 @@
+multi_region_bc:
+  children:
+    region_b:
+      hosts:
+        h1.region_b.test:
+        h2.region_b.test:
+    region_c:
+      children:
+        subdomain_c1:
+          hosts:
+            h1.subdomain_c1.region_c.test:
+        subdomain_c2:
+          hosts:
+            h1.subdomain_c2.region_c.test:

@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "hostvars": {
+      "a2.test": {
+        "var_a2": "snowflake host"
+      }
+    }
+  },
+  "all": {
+    "vars": {
+      "ansible_ssh_private_key_file": "/home/automation/.ssh/id_rsa"
+    }
+  },
+  "region_a": {
+    "hosts": [
+      "h1.region_a.test",
+      "h2.region_a.test",
+      "h3.region_a.test"
+    ]
+  },
+  "multi_region_bc":
+  {
+    "children": [
+      "region_b",
+      "region_c"
+    ]
+  },
+  "region_b": {
+    "hosts": [
+      "h1.region_b.test",
+      "h2.region_b.test"
+    ]
+  },
+  "region_c": {
+    "children": [
+      "subdomain_c1",
+      "subdomain_c2"
+    ]
+  },
+  "subdomain_c1": {
+    "hosts": [
+      "h1.subdomain_c1.region_c.test"
+    ]
+  },
+  "subdomain_c2": {
+    "hosts": [
+      "h1.subdomain_c2.region_c.test"
+    ]
+  },
+  "jump": {
+    "vars": {
+      "ansible_ssh_common_args": "-o ProxyCommand=\"ssh -W %h:%p -q automation@jump.test\""
+    },
+    "hosts": [
+      "h1.region_a.test"
+    ],
+    "children": [
+      "region_c"
+    ]
+  }
+}
+
+
+
